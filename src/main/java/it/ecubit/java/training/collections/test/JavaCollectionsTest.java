@@ -12,6 +12,7 @@ public class JavaCollectionsTest {
     public static void main(String[] args) {
         // Loading of all the top 1000 movies can take up to 10 minutes (needs to call the TMDB APIs for retrieving all the data)
         List<Movie> top1000Movies = ImdbLoader.loadMovies();
+        System.out.println(top1000Movies.get(0).getActors().get(0).getName());
 
         // Exercise 1: Sort the movies by release year (from the most recent to the less recent)
         // and print the results with a counter before the movie info, one for each row
