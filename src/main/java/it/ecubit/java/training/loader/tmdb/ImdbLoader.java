@@ -55,6 +55,11 @@ public class ImdbLoader {
                     float rating = Float.parseFloat(nextRecord[6]);
                     String overview = nextRecord[7];
                     long votes = Long.parseLong(nextRecord [14]);
+                    // ESERCIZIO 09: Aggiungo gross
+                    String grossLine = nextRecord[15].replaceAll(",", "").trim();
+                    long gross = 0;
+                    if (!grossLine.isEmpty())
+                        gross = Long.parseLong(grossLine);
 
                     // Search IMDB ID on TMDB with the TMDB search API
                     Optional<String[]> optIdentifiers = UnirestTmdbRetriever.searchImdbIdByMovieTitle(title, year);
@@ -68,7 +73,7 @@ public class ImdbLoader {
                     if(!id.isEmpty()) {
                         idAsInt = Integer.parseInt(id);
                     }
-                    Movie movie = new Movie(idAsInt, title, overview, year, imdb, duration, rating,votes);
+                    Movie movie = new Movie(idAsInt, title, overview, year, imdb, duration, rating,votes, gross);
                     Set<String> genreNamesSet = new HashSet<>();
                     if(genreNames.contains(",")) {
                         String[] genreNamesArray = genreNames.split(" ");

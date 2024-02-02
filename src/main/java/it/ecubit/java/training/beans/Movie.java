@@ -14,6 +14,8 @@ public class Movie implements Serializable {
     private float rating;
 
     private long votes;
+
+    private long gross;
     private List<Genre> genres = new ArrayList<>();
     private List<Director> directors = new ArrayList<>();
     private List<Actor> actors = new ArrayList<>();
@@ -21,7 +23,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(int id, String title, String overview, int year, String imdb, int duration, float rating, long votes) {
+    public Movie(int id, String title, String overview, int year, String imdb, int duration, float rating, long votes, long gross) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -30,6 +32,7 @@ public class Movie implements Serializable {
         this.duration = duration;
         this.rating = rating;
         this.votes = votes;
+        this.gross = gross;
 
     }
 
@@ -122,9 +125,17 @@ public class Movie implements Serializable {
         this.actors = actors;
     }
 
+    public long getGross() {
+        return gross;
+    }
+
+    public void setGross(long gross) {
+        this.gross = gross;
+    }
+
     @Override
     public String toString() {
-        return "Movie [title=" + title + ", year=" + year + "]";
+        return "Movie [title=" + title + ", year=" + year + ", gross=" + gross + ", votes=" + votes + "]";
     }
 
     @Override
